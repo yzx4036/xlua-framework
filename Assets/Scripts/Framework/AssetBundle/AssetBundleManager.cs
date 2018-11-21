@@ -425,6 +425,36 @@ namespace AssetBundles
             return loader;
         }
 
+        /// <summary>
+        /// 根据包名加载bundle 或AddPackage
+        /// </summary>
+        /// <param name="pFUIPackageName"></param>
+        /// <returns></returns>
+        public IEnumerator LoadFairyGUIBundle(string pFUIPackageName)
+        {
+            string path = "Assets/" + AssetBundleConfig.AssetsFolderName + "/UI/" + AssetBundleConfig.FairyGUIFolderName+ "/" + pFUIPackageName;
+#if UNITY_EDITOR
+
+            //if (pIsEditorMode)
+            //{
+            //    //编辑器模式直接从\AssetsPackage\加载FUI包，不用AssetBundle
+
+            //}
+#endif
+            //else
+            //{
+                //加载AssetBundle
+                string descBundlePath = AssetBundleUtility.GetFairyGUIDescBundlePath(pFUIPackageName);
+                string resBundlePath = AssetBundleUtility.GetFairyGUIResBundlePath(pFUIPackageName);
+                var descLoader = this.LoadAssetBundleAsync(descBundlePath);
+             var resLoader = this.LoadAssetBundleAsync(resBundlePath);
+            yield return descLoader;
+            Debug.LogError(descLoader.assetbundle);
+                //this.LoadAssetBundleAsync
+                //FairyGUI.UIPackage.AddPackage()
+            //}
+        }
+
         // 从服务器下载网页内容，需提供完整url，非AB（不计引用计数、不缓存），Creater使用后记得回收
         public ResourceWebRequester DownloadWebResourceAsync(string url)
         {

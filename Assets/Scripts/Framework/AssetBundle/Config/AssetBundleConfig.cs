@@ -24,6 +24,7 @@ namespace AssetBundles
         public const string AssetBundleServerUrlFileName = "AssetBundleServerUrl.txt";
         public const string VariantMapParttren = "Variant";
         public const string CommonMapPattren = ",";
+        public const string FairyGUIFolderName = "FairyGUIRes";
 
 #if UNITY_EDITOR
         public static string AssetBundlesBuildOutputPath

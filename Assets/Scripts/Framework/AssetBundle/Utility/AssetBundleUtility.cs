@@ -113,6 +113,8 @@ namespace AssetBundles
                 assetPath = assetPath.Replace(".", "_");
                 //add after suffix ".assetbundle" to the end
                 assetPath = assetPath + AssetBundleConfig.AssetBundleSuffix;
+                Debug.LogError(">>>"+ assetPath);
+                Debug.LogError(assetPath.ToLower());
                 return assetPath.ToLower();
             }
             return null;
@@ -141,6 +143,28 @@ namespace AssetBundles
                 Debug.LogError("Asset path is not a package path!");
                 return assetPath;
             }
+        }
+
+        /// <summary>
+        /// 根据FairyGUI的包名获取 desc bundle 路径
+        /// </summary>
+        /// <param name="pFUIPackageName"></param>
+        /// <returns></returns>
+        public static string GetFairyGUIDescBundlePath(string pFUIPackageName)
+        {   
+            string AssetName = PackagePathToAssetsPath("UI/"+AssetBundleConfig.FairyGUIFolderName + "/" + pFUIPackageName);
+            return AssetBundlePathToAssetBundleName(AssetName);
+        }
+
+        /// <summary>
+        /// 根据FairyGUI的包名获取 res bundle 路径
+        /// </summary>
+        /// <param name="pFUIPackageName"></param>
+        /// <returns></returns>
+        public static string GetFairyGUIResBundlePath(string pFUIPackageName)
+        {
+            string AssetName = PackagePathToAssetsPath("UI/" + AssetBundleConfig.FairyGUIFolderName + "/" + pFUIPackageName + "_res");
+            return AssetBundlePathToAssetBundleName(AssetName);
         }
     }
 }

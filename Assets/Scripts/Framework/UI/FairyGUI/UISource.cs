@@ -31,7 +31,8 @@ namespace FairyGame
 				return;
 
 			_loading = true;
-            Debug.Log(">>>>UISource : IUISource");
+            Debug.LogError(">>>>UISource : IUISource");
+            AssetBundleManager.Instance.LoadFairyGUIBundle(_fileName);
             //var abloader = AssetBundleManager.Instance.LoadAssetBundleAsync("");
             //yield return abloader;
             //abloader.Dispose();
