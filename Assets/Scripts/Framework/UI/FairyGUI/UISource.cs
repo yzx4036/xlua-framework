@@ -1,4 +1,5 @@
-﻿using FairyGUI;
+﻿using AssetBundles;
+using FairyGUI;
 using UnityEngine;
 
 namespace FairyGame
@@ -31,9 +32,14 @@ namespace FairyGame
 
 			_loading = true;
             Debug.Log(">>>>UISource : IUISource");
+            //var abloader = AssetBundleManager.Instance.LoadAssetBundleAsync("");
+            //yield return abloader;
+            //abloader.Dispose();
             //todo 修改为项目的的ResMgr
-    //        AssetManager.inst.LoadAsset("ui", _fileName.ToLower(),
-				//(string assetPath, string fileName, object data) => { callback(); });
-		}
-	}
+            //        AssetManager.inst.LoadAsset("ui", _fileName.ToLower(),
+            //(string assetPath, string fileName, object data) => { callback(); });
+        }
+
+
+    }
 }
