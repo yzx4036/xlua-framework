@@ -35,8 +35,10 @@ function BaseWindow:Create()
 --  self:mainCom:SetSize(GRoot.inst:width, GRoot.inst:height)
 --  self:mainCom:AddRelation(GRoot.inst, RelationType.Size)
 --  GRoot.inst:AddChild(mainCom)
-  self.window = LuaWindow()
-  self.window:ConnectLua(self)
+    if self.window == nil then
+        self.window = LuaWindow()
+        self.window:ConnectLua(self)
+    end
 end
 
 function BaseWindow:OnInit()

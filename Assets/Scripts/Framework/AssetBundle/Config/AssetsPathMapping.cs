@@ -31,113 +31,119 @@ using XLua;
 
 namespace AssetBundles
 {
-    public class ResourcesMapItem
-    {
-        public string assetbundleName;
-        public string assetName;
-    }
-
-    [Hotfix]
-    [LuaCallCSharp]
-    public class AssetsPathMapping
-    {
-        protected const string PATTREN = AssetBundleConfig.CommonMapPattren;
-        protected Dictionary<string, ResourcesMapItem> pathLookup = new Dictionary<string, ResourcesMapItem>();
-        protected Dictionary<string, List<string>> assetsLookup = new Dictionary<string, List<string>>();
-        protected Dictionary<string, string> assetbundleLookup = new Dictionary<string, string>();
-        protected List<string> emptyList = new List<string>();
-
-        public AssetsPathMapping()
+        public class ResourcesMapItem
         {
-            AssetName = AssetBundleUtility.PackagePathToAssetsPath(AssetBundleConfig.AssetsPathMapFileName);
-            AssetbundleName = AssetBundleUtility.AssetBundlePathToAssetBundleName(AssetName);
+                public string assetbundleName;
+                public string assetName;
         }
 
-        public string AssetbundleName
+        [Hotfix]
+        [LuaCallCSharp]
+        public class AssetsPathMapping
         {
-            get;
-            protected set;
-        }
+                protected const string PATTREN = AssetBundleConfig.CommonMapPattren;
+                protected Dictionary<string, ResourcesMapItem> pathLookup = new Dictionary<string, ResourcesMapItem>();
+                protected Dictionary<string, List<string>> assetsLookup = new Dictionary<string, List<string>>();
+                protected Dictionary<string, string> assetbundleLookup = new Dictionary<string, string>();
+                protected List<string> emptyList = new List<string>();
 
-        public string AssetName
-        {
-            get;
-            protected set;
-        }
-
-        public void Initialize(string content)
-        {
-            if (string.IsNullOrEmpty(content))
-            {
-                Logger.LogError("ResourceNameMap empty!!");
-                return;
-            }
-
-            content = content.Replace("\r\n", "\n");
-            string[] mapList = content.Split('\n');
-            foreach (string map in mapList)
-            {
-                if (string.IsNullOrEmpty(map))
+                public AssetsPathMapping()
                 {
-                    continue;
+                        AssetName = AssetBundleUtility.PackagePathToAssetsPath(AssetBundleConfig.AssetsPathMapFileName);
+                        AssetbundleName = AssetBundleUtility.AssetBundlePathToAssetBundleName(AssetName);
                 }
 
-                string[] splitArr = map.Split(new[] { PATTREN }, System.StringSplitOptions.None);
-                if (splitArr.Length < 2)
+                public string AssetbundleName
                 {
-                    Logger.LogError("splitArr length < 2 : " + map);
-                    continue;
+                        get;
+                        protected set;
                 }
 
-                ResourcesMapItem item = new ResourcesMapItem();
-                // 如：ui/prefab/assetbundleupdaterpanel_prefab.assetbundle
-                item.assetbundleName = splitArr[0];
-                // 如：UI/Prefab/AssetbundleUpdaterPanel.prefab
-                item.assetName = splitArr[1];
-                
-                var assetPath = item.assetName;
-                pathLookup.Add(assetPath, item);
-                List<string> assetsList = null;
-                assetsLookup.TryGetValue(item.assetbundleName, out assetsList);
-                if (assetsList == null)
+                public string AssetName
                 {
-                    assetsList = new List<string>();
+                        get;
+                        protected set;
                 }
-                if (!assetsList.Contains(item.assetName))
-                {
-                    assetsList.Add(item.assetName);
-                }
-                assetsLookup[item.assetbundleName] = assetsList;
-                assetbundleLookup.Add(item.assetName, item.assetbundleName);
-            }
-        }
-        
-        public bool MapAssetPath(string assetPath, out string assetbundleName, out string assetName)
-        {
-            assetbundleName = null;
-            assetName = null;
-            ResourcesMapItem item = null;
-            if (pathLookup.TryGetValue(assetPath, out item))
-            {
-                assetbundleName = item.assetbundleName;
-                assetName = item.assetName;
-                return true;
-            }
-            return false;
-        }
-        
-        public List<string> GetAllAssetNames(string assetbundleName)
-        {
-            List<string> allAssets = null;
-            assetsLookup.TryGetValue(assetbundleName, out allAssets);
-            return allAssets == null ? emptyList : allAssets;
-        }
 
-        public string GetAssetBundleName(string assetName)
-        {
-            string assetbundleName = null;
-            assetbundleLookup.TryGetValue(assetName, out assetbundleName);
-            return assetbundleName;
+                public void Initialize(string content)
+                {
+                        if (string.IsNullOrEmpty(content))
+                        {
+                                Logger.LogError("ResourceNameMap empty!!");
+                                return;
+                        }
+
+                        content = content.Replace("\r\n", "\n");
+                        string[] mapList = content.Split('\n');
+                        foreach (string map in mapList)
+                        {
+                                if (string.IsNullOrEmpty(map))
+                                {
+                                        continue;
+                                }
+
+                                string[] splitArr = map.Split(new[] { PATTREN }, System.StringSplitOptions.None);
+                                if (splitArr.Length < 2)
+                                {
+                                        Logger.LogError("splitArr length < 2 : " + map);
+                                        continue;
+                                }
+
+                                ResourcesMapItem item = new ResourcesMapItem();
+                                // 如：ui/prefab/assetbundleupdaterpanel_prefab.assetbundle
+                                item.assetbundleName = splitArr[0];
+                                // 如：UI/Prefab/AssetbundleUpdaterPanel.prefab
+                                item.assetName = splitArr[1];
+
+                                var assetPath = item.assetName;
+                                pathLookup.Add(assetPath, item);
+                                List<string> assetsList = null;
+                                assetsLookup.TryGetValue(item.assetbundleName, out assetsList);
+                                if (assetsList == null)
+                                {
+                                        assetsList = new List<string>();
+                                }
+                                if (!assetsList.Contains(item.assetName))
+                                {
+                                        assetsList.Add(item.assetName);
+                                }
+                                assetsLookup[item.assetbundleName] = assetsList;
+                                assetbundleLookup.Add(item.assetName, item.assetbundleName);
+                        }
+                }
+
+                public bool MapAssetPath(string assetPath, out string assetbundleName, out string assetName)
+                {
+                        assetbundleName = null;
+                        assetName = null;
+                        ResourcesMapItem item = null;
+                        if (assetPath.StartsWith("ui/fairyg"))
+                        {
+                                Logger.LogError(">>>>>>>>>>>>assetPath "+ assetPath);
+
+                                
+                        }
+                        if (pathLookup.TryGetValue(assetPath, out item))
+                        {
+                                assetbundleName = item.assetbundleName;
+                                assetName = item.assetName;
+                                return true;
+                        }
+                        return false;
+                }
+
+                public List<string> GetAllAssetNames(string assetbundleName)
+                {
+                        List<string> allAssets = null;
+                        assetsLookup.TryGetValue(assetbundleName, out allAssets);
+                        return allAssets == null ? emptyList : allAssets;
+                }
+
+                public string GetAssetBundleName(string assetName)
+                {
+                        string assetbundleName = null;
+                        assetbundleLookup.TryGetValue(assetName, out assetbundleName);
+                        return assetbundleName;
+                }
         }
-    }
 }

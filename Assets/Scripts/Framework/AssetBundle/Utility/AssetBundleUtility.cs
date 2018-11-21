@@ -164,7 +164,7 @@ namespace AssetBundles
         public static string GetFairyGUIResBundlePath(string pFUIPackageName)
         {
             string AssetName = PackagePathToAssetsPath("UI/" + AssetBundleConfig.FairyGUIFolderName + "/" + pFUIPackageName + "_res");
-            return AssetBundlePathToAssetBundleName(AssetName);
+                        return AssetBundlePathToAssetBundleName(AssetName);
         }
     }
 }

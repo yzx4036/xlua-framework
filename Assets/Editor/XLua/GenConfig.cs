@@ -154,6 +154,7 @@ public static class GenConfig
         typeof(UnityEngine.Events.UnityAction),
         typeof(System.Collections.IEnumerator),
         typeof(UnityEngine.Events.UnityAction<Vector2>),
+        typeof(FairyGUI.UIPackage.CreateObjectCallback)
     };
 
 	//黑名单

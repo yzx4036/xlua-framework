@@ -2,10 +2,8 @@
 local AlertWin = BaseClass("AlertWin", BaseWindow)
 function AlertWin:__OnInit()
     Logger.Log(">>>AlertWin:__init %s",self.vars)
-
-    self:SetContentSource("denglu", "denglu")
+    self:SetContentSource("DengLu", "Main")
     self.asyncCreate = false
-    self.window:Init()
 end
 
 function AlertWin:InternalOpen(msg, callback)
