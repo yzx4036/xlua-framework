@@ -132,10 +132,17 @@ namespace AssetBundles
                     {
                         int position = relativePath.LastIndexOf(".");
                         relativePath = position > -1 ? relativePath.Substring(0, position) : relativePath;
-
-                        int isResIndex = relativePath.IndexOf("@");
-                        if (isResIndex > -1)
-                            relativePath = relativePath.Substring(0, isResIndex) + "_res";
+                        string[] patten = relativePath.Split('_');
+                        if (patten.Length > 1)
+                        {
+                            if (!patten[1].StartsWith("fui"))
+                            {
+                                relativePath = patten[0] + "_res";
+                            }
+                        }
+                        //int isResIndex = relativePath.IndexOf("@");
+                        //if (isResIndex > -1)
+                        //    relativePath = relativePath.Substring(0, isResIndex) + "_res";
                         //Debug.Log(">>>>>>>>>>:" + relativePath);
                     }
                     importer.assetBundleName = relativePath;

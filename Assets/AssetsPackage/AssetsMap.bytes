@@ -1,4 +1,3 @@
-assetsmap_bytes.assetbundle,AssetsMap.bytes
 effect/common.assetbundle,Effect/Common/Materials/models_fx_R.mat
 effect/common.assetbundle,Effect/Common/Materials/models_fx_RGB.mat
 effect/common.assetbundle,Effect/Common/Texture/Matcap_Encode2.png
@@ -364,12 +363,10 @@ ui/atlas/role.assetbundle,UI/Atlas/Role/ui_role_62.png
 ui/atlas/role.assetbundle,UI/Atlas/Role/ui_role_64.png
 ui/atlas/role.assetbundle,UI/Atlas/Role/ui_role_65.png
 ui/atlas/role.assetbundle,UI/Atlas/Role/ui_role_66.png
-ui/fairyguires/denglu.assetbundle,UI/FairyGUIRes/DengLu.bytes
-ui/fairyguires/denglu_res.assetbundle,UI/FairyGUIRes/DengLu@atlas_inq93!a.png
-ui/fairyguires/denglu_res.assetbundle,UI/FairyGUIRes/DengLu@atlas_inq93.png
-ui/fairyguires/denglu_res.assetbundle,UI/FairyGUIRes/DengLu@atlas0!a.png
-ui/fairyguires/denglu_res.assetbundle,UI/FairyGUIRes/DengLu@atlas0.png
-ui/fairyguires/denglu_res.assetbundle,UI/FairyGUIRes/DengLu@sprites.bytes
+ui/fairyguires/basics_fui.assetbundle,UI/FairyGUIRes/Basics_fui.bytes
+ui/fairyguires/basics_res.assetbundle,UI/FairyGUIRes/Basics_atlas0.png
+ui/fairyguires/basics_res.assetbundle,UI/FairyGUIRes/Basics_gojg7u.wav
+ui/fairyguires/basics_res.assetbundle,UI/FairyGUIRes/Basics_o4lt7w.wav
 ui/fonts/system_art_ttf.assetbundle,UI/Fonts/system_art.TTF
 ui/fonts/system_ttf.assetbundle,UI/Fonts/system.TTF
 ui/prefabs/common/uinoticetip_prefab.assetbundle,UI/Prefabs/Common/UINoticeTip.prefab
@@ -379,4 +376,3 @@ ui/prefabs/view/uiloading_prefab.assetbundle,UI/Prefabs/View/UILoading.prefab
 ui/prefabs/view/uilogin_prefab.assetbundle,UI/Prefabs/View/UILogin.prefab
 ui/prefabs/view/uiloginserver_prefab.assetbundle,UI/Prefabs/View/UILoginServer.prefab
 ui/prefabs/view/uitestmain_prefab.assetbundle,UI/Prefabs/View/UITestMain.prefab
-variantsmap_bytes.assetbundle,VariantsMap.bytes

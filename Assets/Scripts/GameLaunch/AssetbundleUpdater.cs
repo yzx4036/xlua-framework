@@ -680,7 +680,8 @@ public class AssetbundleUpdater : MonoBehaviour
         // 重启Lua虚拟机
         string luaAssetbundleName = XLuaManager.Instance.AssetbundleName;
         AssetBundleManager.Instance.SetAssetBundleResident(luaAssetbundleName, true);
-        var abloader = AssetBundleManager.Instance.LoadAssetBundleAsync(luaAssetbundleName);
+        BaseAssetBundleAsyncLoader abloader = null;
+        AssetBundleManager.Instance.LoadAssetBundleAsync(luaAssetbundleName, out abloader);
         yield return abloader;
         abloader.Dispose();
         XLuaManager.Instance.Restart();

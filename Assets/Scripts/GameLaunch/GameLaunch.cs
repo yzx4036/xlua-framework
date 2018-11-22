@@ -43,8 +43,11 @@ public class GameLaunch : MonoBehaviour
         XLuaManager.Instance.Startup();
         string luaAssetbundleName = XLuaManager.Instance.AssetbundleName;
         AssetBundleManager.Instance.SetAssetBundleResident(luaAssetbundleName, true);
-        var abloader = AssetBundleManager.Instance.LoadAssetBundleAsync(luaAssetbundleName);
+        BaseAssetBundleAsyncLoader abloader = null;
+        AssetBundleManager.Instance.LoadAssetBundleAsync(luaAssetbundleName, out abloader);
+        Debug.LogError(">>>>>>>>GameLaunch start"+ abloader.assetbundle+AssetBundleManager.getMemory(abloader));
         yield return abloader;
+        Debug.LogError(">>>>>>>>GameLaunch start after " + abloader.assetbundle+AssetBundleManager.getMemory(abloader.assetbundle));
         abloader.Dispose();
         XLuaManager.Instance.OnInit();
         XLuaManager.Instance.StartHotfix();

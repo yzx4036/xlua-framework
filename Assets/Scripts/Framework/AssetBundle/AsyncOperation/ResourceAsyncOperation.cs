@@ -28,6 +28,12 @@ namespace AssetBundles
             }
         }
 
+        public bool isDispose
+        {
+            get;
+            protected set;
+        }
+
         public float progress
         {
             get
@@ -74,6 +80,7 @@ namespace AssetBundles
         {
             assetbundleName = null;
             assetbundle = null;
+            this.isDispose = true;
         }
     }
 

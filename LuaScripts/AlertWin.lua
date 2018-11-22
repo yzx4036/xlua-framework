@@ -2,7 +2,7 @@
 local AlertWin = BaseClass("AlertWin", BaseWindow)
 function AlertWin:__OnInit()
     Logger.Log(">>>AlertWin:__init %s",self.vars)
-    self:SetContentSource("DengLu", "Main")
+    self:SetContentSource("Basics", "Main")
     self.asyncCreate = false
 end
 
