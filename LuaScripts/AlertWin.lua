@@ -1,5 +1,5 @@
 ---@class AlertWin:BaseWindow
-local AlertWin = BaseClass("AlertWin", BaseWindow)
+local AlertWin = BaseClass("AlertWin", WindowBase)
 function AlertWin:__OnInit()
     Logger.Log(">>>AlertWin:__init %s",self.vars)
 

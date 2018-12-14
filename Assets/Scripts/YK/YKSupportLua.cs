@@ -31,12 +31,12 @@ public class YKSupportLua
             list = UIMgr.Instance.GetAllOpenWindows();
         }
 
-        UIMgr.Instance.ShowWindow(uiName, null, ()=> 
-        {
-            object[] objs = lunFun.Get<LuaFunction>("new").Call();
-            LuaWindow wind = objs[0] as LuaWindow;
-            return wind;
-        }, param, list, hideDotDel);
+        //UIMgr.Instance.ShowWindow(uiName, null, ()=> 
+        //{
+        //    object[] objs = lunFun.Get<LuaFunction>("new").Call();
+        //    LuaWindow wind = objs[0] as LuaWindow;
+        //    return wind;
+        //}, param, list, hideDotDel);
     }
 
     public static void GotoScene(string sceneName,object param , LuaTable lunFun)

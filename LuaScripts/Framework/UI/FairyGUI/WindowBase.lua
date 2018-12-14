@@ -7,42 +7,42 @@
 
 
 ---@class WindowBase : YKSupportLua.LuaWindow @窗口基类
-local WindowBase = Class(nil, YKCore.LuaWindow)--YK.window_class()
+local WindowBase = BaseClass("WindowBase", YKCore.LuaWindow)--YK.window_class()
 
 ---@param ins YKSupportLua.LuaWindow
-function WindowBase:ctor(ins)
+function WindowBase:__init(ins)
     self.csuserdata = ins
     self.isNeedHideAnimation = false
     self.isNeedShowAnimation = false
 end
 
 function WindowBase:OnInit()
-
+    Logger.Log(">>>>>WindowBase:OnInit")
 end
 
 function WindowBase:DoShowAnimation()
     self.scale = Vector2(0.3, 0.3);
-    YKCore.DOTweenFloat(self.scale.x, 1, 0.3, function(scal)
-        if self ~= nil then
-            self.scale = Vector2(scal, scal);
-        end
-    end, 0, DG.Tweening.Ease.OutCirc, function()
-        if self ~= nil and self.contentPane ~= nil then
-            self:OnShown(self:GetData());
-        end
-    end)
+    --YKCore.DOTweenFloat(self.scale.x, 1, 0.3, function(scal)
+    --    if self ~= nil then
+    --        self.scale = Vector2(scal, scal);
+    --    end
+    --end, 0, DG.Tweening.Ease.OutCirc, function()
+    --    if self ~= nil and self.contentPane ~= nil then
+    --        self:OnShown(self:GetData());
+    --    end
+    --end)
 end
 
 function WindowBase:DoHideAnimation()
-    YKCore.DOTweenFloat(self.scale.x, 0, 0.3, function(scal)
-        if self ~= nil then
-            self.scale = Vector2(scal, scal);
-        end
-    end, 0, nil, function()
-        if self ~= nil and self.contentPane ~= nil then
-            self:HideImmediately();
-        end
-    end)
+    --YKCore.DOTweenFloat(self.scale.x, 0, 0.3, function(scal)
+    --    if self ~= nil then
+    --        self.scale = Vector2(scal, scal);
+    --    end
+    --end, 0, nil, function()
+    --    if self ~= nil and self.contentPane ~= nil then
+    --        self:HideImmediately();
+    --    end
+    --end)
 
 end
 
@@ -75,10 +75,6 @@ end
 ---@param btn FairyGUI.GButton
 function WindowBase:OnBtnClick(btn)
 
-end
-
-function WindowBase.Class()
-    return Class(WindowBase, YKCore.LuaWindow)
 end
 
 return WindowBase

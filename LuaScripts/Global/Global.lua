@@ -120,8 +120,17 @@ HallConnector = require "Net.Connector.HallConnector"
 
 --加载FairyGUI 相关
 require "Framework.UI.FairyGUI.FairyGUI"
----@type BaseWindow
-BaseWindow = require "Framework.UI.FairyGUI.BaseWindow"
+
+--BaseWindow = require "Framework.UI.FairyGUI.BaseWindow"
+YKCore = {}
+YKCore.LuaWindow = CS.YKSupportLua.LuaWindow
+--print(">>>>>>>>>>>>YKCore.LuaWindow "..YKCore.LuaWindow)
+YKCore.LuaStateBase = CS.YKSupportLua.LuaStateBase
+YKCore.LuaTaskBase = CS.YKSupportLua.LuaTaskBase
+YKCore.LuaUBBParser = CS.YKSupportLua.LuaUBBParser
+
+---@type WindowBase
+WindowBase = require "Framework.UI.FairyGUI.WindowBase"
 
 -- 单例类初始化
 SingleGet.UIManager()

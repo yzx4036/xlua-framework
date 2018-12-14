@@ -138,7 +138,13 @@ public static class GenConfig
         typeof(GLuaProgressBar),
         typeof(GLuaSlider),
         typeof(GLuaComboBox),
-        typeof(LuaWindow),
+        //typeof(LuaWindow),
+                typeof(YKSupportLua),
+        //typeof(YKSupportLua.LuaSceneBase),
+        typeof(YKSupportLua.LuaStateBase),
+        typeof(YKSupportLua.LuaTaskBase),
+        typeof(YKSupportLua.LuaUBBParser),
+        typeof(YKSupportLua.LuaWindow),
         //typeof(TweenUtils),
     };
 
